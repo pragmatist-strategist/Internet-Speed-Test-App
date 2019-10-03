@@ -8,16 +8,22 @@ import fr.bmartel.speedtest.SpeedTestSocket
 import fr.bmartel.speedtest.inter.ISpeedTestListener
 import fr.bmartel.speedtest.model.SpeedTestError
 
+
 class InternetSpeedBuilder(var activity: Activity) {
 
     private var countTestSpeed = 0
-    private var LIMIT = 3
+    private var LIMIT = 10
     lateinit var url: String
     lateinit var javaListener: OnEventInternetSpeedListener
     lateinit var onDownloadProgressListener: () -> Unit
     lateinit var onUploadProgressListener: () -> Unit
     lateinit var onTotalProgressListener: () -> Unit
     private lateinit var progressModel: ProgressionModel
+
+
+
+
+
 
     fun start(url: String, limitCount: Int) {
         this.url = url
@@ -87,6 +93,8 @@ class InternetSpeedBuilder(var activity: Activity) {
                     progressModel.progressTotal = percent / 2
                     progressModel.progressDownload = percent
                     progressModel.downloadSpeed = report.transferRateBit
+                    //Log.e("download",progressModel.downloadSpeed.toString());
+                    //MainJavaActivity.down.add(progressModel.downloadSpeed)
 
                     activity.runOnUiThread {
                         javaListener.onDownloadProgress(countTestSpeed, progressModel)
@@ -145,6 +153,8 @@ class InternetSpeedBuilder(var activity: Activity) {
                     progressModel.progressTotal = percent / 2 + 50
                     progressModel.progressUpload = percent
                     progressModel.uploadSpeed = report.transferRateBit
+                    //Log.e("upload",progressModel.uploadSpeed.toString());
+                    //MainJavaActivity.up.add(progressModel.uploadSpeed)
 
                     activity.runOnUiThread {
 
