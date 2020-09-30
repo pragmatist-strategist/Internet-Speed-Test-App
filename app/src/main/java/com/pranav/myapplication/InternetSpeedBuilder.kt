@@ -155,7 +155,8 @@ class InternetSpeedBuilder(var activity: Activity) {
                     progressModel.uploadSpeed = report.transferRateBit
                     //Log.e("upload",progressModel.uploadSpeed.toString());
                     //MainJavaActivity.up.add(progressModel.uploadSpeed)
-
+                    //This is a list of test changes for pscse
+                    //Hope this makes a great impact
                     activity.runOnUiThread {
 
                         if (countTestSpeed < LIMIT) {
