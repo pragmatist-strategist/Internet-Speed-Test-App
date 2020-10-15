@@ -30,7 +30,7 @@ public class MainJavaActivity extends AppCompatActivity {
         dspeed = findViewById(R.id.dspeed);
         uspeed =findViewById(R.id.uspeed);
         results = findViewById(R.id.result);
-
+//fdgfhgjgjg
         results.setVisibility(View.GONE);
         resultlayout = findViewById(R.id.resultview);
         resultlayout.setVisibility(View.GONE);
