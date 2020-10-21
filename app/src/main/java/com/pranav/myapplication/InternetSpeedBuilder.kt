@@ -3,6 +3,7 @@ package com.pranav.myapplication
 import android.app.Activity
 import android.os.AsyncTask
 import android.util.Log
+import android.widget.Toast
 import fr.bmartel.speedtest.SpeedTestReport
 import fr.bmartel.speedtest.SpeedTestSocket
 import fr.bmartel.speedtest.inter.ISpeedTestListener
@@ -79,6 +80,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
                 override fun onError(speedTestError: SpeedTestError, errorMessage: String) {
                     // called when a download/upload error occur
+                    //Toast.makeText(activity.applicationContext, "Error Occur $errorMessage", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onProgress(percent: Float, report: SpeedTestReport) {
@@ -139,6 +141,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
                 override fun onError(speedTestError: SpeedTestError, errorMessage: String) {
                     // called when a download/upload error occur
+                    Log.e("Error in SpeedUpload", errorMessage)
                 }
 
                 override fun onProgress(percent: Float, report: SpeedTestReport) {
