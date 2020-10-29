@@ -1,101 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".MainJavaActivity">
+    tools:context=".MainKotlinActivity">
 
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
+
         <TextView
             android:id="@+id/tvProgress"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Progress"
-            android:gravity="left"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="@string/progress"
             android:textColor="@android:color/holo_green_dark"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvUpload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Download"
-            android:gravity="center"
-            android:textColor="@android:color/holo_blue_dark"
             android:layout_weight="1"
-            android:textStyle="bold"
-            />
+            android:gravity="center"
+            android:text="@string/download"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvDownload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:textColor="@android:color/holo_orange_dark"
+            android:layout_gravity="end"
             android:layout_weight="1"
-            android:textStyle="bold"
-            />
+            android:gravity="end"
+            android:text="@string/upload"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        tools:listitem="@layout/view_item"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_below="@+id/header"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        tools:listitem="@layout/view_item" />
 
     <TextView
         android:id="@+id/result"
-        android:visibility="gone"
+        android:layout_width="4dp"
+        android:layout_height="6dp"
         android:layout_below="@+id/recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:layout_marginTop="32dp"
+        android:text="@string/result"
         android:textColor="@android:color/holo_red_dark"
-        android:text="Result"/>
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
 
     <LinearLayout
-        android:visibility="gone"
-        android:orientation="horizontal"
         android:id="@+id/resultview"
-        android:layout_below="@+id/result"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/result"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/Down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:textColor="@android:color/holo_blue_dark"
-                android:text="Download"/>
+                android:gravity="center"
+                android:text="@string/download"
+                android:textColor="@android:color/holo_blue_dark" />
+
             <TextView
                 android:id="@+id/dspeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:textColor="@android:color/holo_blue_dark"/>
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,35 +114,40 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/Up"
                 android:layout_width="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_orange_dark"
-                android:text="Upload"/>
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/upload"
+                android:textColor="@android:color/holo_orange_dark" />
+
             <TextView
                 android:id="@+id/uspeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="@android:color/holo_orange_dark"/>
+                android:textColor="@android:color/holo_orange_dark" />
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/retest"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@id/resultview"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_btn"
+        android:text="@string/retest"
         android:textColor="#ffffff"
-        android:text="RETEST"/>
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultview" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

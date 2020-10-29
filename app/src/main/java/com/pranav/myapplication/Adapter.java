@@ -1,7 +1,7 @@
 package com.pranav.myapplication;
 
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,24 +44,25 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         if (dataList == null) {
-            MainJavaActivity.results.setVisibility(View.GONE);
-            MainJavaActivity.resultlayout.setVisibility(View.GONE);
-            MainJavaActivity.retest.setVisibility(View.GONE);
+            MainKotlinActivity.results.setAllCaps(true);
+            MainKotlinActivity.results.setVisibility(View.GONE);
+            MainKotlinActivity.resultlayout.setVisibility(View.GONE);
+            MainKotlinActivity.retest.setVisibility(View.GONE);
             return 0;
         }
         else if(dataList.size()-1<limit) {
-            MainJavaActivity.results.setVisibility(View.GONE);
-            MainJavaActivity.resultlayout.setVisibility(View.GONE);
-            MainJavaActivity.retest.setVisibility(View.GONE);
+            MainKotlinActivity.results.setVisibility(View.GONE);
+            MainKotlinActivity.resultlayout.setVisibility(View.GONE);
+            MainKotlinActivity.retest.setVisibility(View.GONE);
             return dataList.size();
         }
 
-        MainJavaActivity.results.setVisibility(View.VISIBLE);
-        MainJavaActivity.resultlayout.setVisibility(View.VISIBLE);
-        MainJavaActivity.retest.setVisibility(View.VISIBLE);
+        MainKotlinActivity.results.setVisibility(View.VISIBLE);
+        MainKotlinActivity.resultlayout.setVisibility(View.VISIBLE);
+        MainKotlinActivity.retest.setVisibility(View.VISIBLE);
 
-        MainJavaActivity.dspeed.setText(avgd(dataList));
-        MainJavaActivity.uspeed.setText(avgu(dataList));
+        MainKotlinActivity.dspeed.setText(avgd(dataList));
+        MainKotlinActivity.uspeed.setText(avgu(dataList));
 
         return limit;
     }
