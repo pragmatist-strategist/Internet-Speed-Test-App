@@ -4,18 +4,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.pranav.myapplication.Adapter.MyViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.view_item.view.*
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.*
 
 class Adapter(private val activity: MainKotlinActivity) : RecyclerView.Adapter<MyViewHolder>() {
+
     var limit = 8
+
     private val dataList: MutableList<ProgressionModel>? = ArrayList()
+
     fun setDataList(position: Int, data: ProgressionModel) {
         if (dataList!!.size <= position) {
             dataList.add(data)
@@ -56,19 +59,10 @@ class Adapter(private val activity: MainKotlinActivity) : RecyclerView.Adapter<M
     }
 
     inner class MyViewHolder(itemView: View) : ViewHolder(itemView) {
-        private val tvProgress: AppCompatTextView
-        private val tvDownload: AppCompatTextView
-        private val tvUpload: AppCompatTextView
         fun bind(progressionModel: ProgressionModel) {
-            tvProgress.text = "" + progressionModel.progressTotal
-            tvDownload.text = "" + progressionModel.downloadSpeed
-            tvUpload.text = "" + progressionModel.uploadSpeed
-        }
-
-        init {
-            tvProgress = itemView.findViewById(R.id.tvProgress)
-            tvDownload = itemView.findViewById(R.id.tvDownload)
-            tvUpload = itemView.findViewById(R.id.tvUpload)
+            itemView.tvProgress.text = "" + progressionModel.progressTotal
+            itemView.tvDownload.text = "" + progressionModel.downloadSpeed
+            itemView.tvUpload.text = "" + progressionModel.uploadSpeed
         }
     }
 
