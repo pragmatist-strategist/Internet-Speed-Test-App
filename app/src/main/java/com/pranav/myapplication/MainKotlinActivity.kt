@@ -20,7 +20,7 @@ class MainKotlinActivity : AppCompatActivity() {
         resultview.visibility = View.GONE
         retest.visibility = View.GONE
 
-        adapter = Adapter()
+        adapter = Adapter(this)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
 
@@ -36,9 +36,9 @@ class MainKotlinActivity : AppCompatActivity() {
 
         builder.start("http://www.speedtest.net/mini.php", 20)
 
-        retest.setOnClickListener(View.OnClickListener {
+        retest.setOnClickListener {
             finish()
             startActivity(Intent(applicationContext, MainKotlinActivity::class.java))
-        })
+        }
     }
 }
